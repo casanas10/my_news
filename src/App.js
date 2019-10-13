@@ -5,11 +5,11 @@ import NewsArticlesList from "./components/NewsArticlesList";
 
 const App = () => {
   return (
-    <>
+    <div style={{ backgroundColor: "green" }}>
       <Header />
       <SearchBar />
       <NewsArticlesList />
-    </>
+    </div>
   );
 };
 
