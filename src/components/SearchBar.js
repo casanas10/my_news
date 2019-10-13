@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import SearchIcon from "@material-ui/icons/Search";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "orange",
+    padding: "0",
     marginTop: "1em",
-    marginBottom: "1em",
     paddingTop: "1em",
     paddingBottom: "1em"
   },
+  // border: {
+  //   border: "2px solid #ddd"
+  // },
   searchBox: {
-    width: "100%"
+    // float: "left",
+    paddingTop: "15px",
+    paddingBottom: "15px",
+    width: "80%",
+    textIndent: "10px",
+    border: "2px solid #ddd"
+  },
+  submitButton: {
+    // float: "right",
+    paddingRight: "0",
+    paddingLeft: "0",
+    width: "20%",
+    paddingTop: "15px",
+    paddingBottom: "15px",
+    background: "#ddd",
+    border: "2px solid #ddd",
+    cursor: "pointer"
   }
 });
 
@@ -21,20 +40,29 @@ const SearchBar = () => {
 
   return (
     <div className={[classes.root, "container"].join(" ")}>
-      <div className="search-params">
-        <form>
-          <label htmlFor="tickerSymbol">
-            <input
-              className={classes.searchBox}
-              id="tickerSymbol"
-              value={tickerSymbol}
-              placeholder="Search for..."
-              onChange={e => setTickerSymbol(e.target.value)}
-            />
-          </label>
-          <button>Submit</button>
-        </form>
+      <div className={classes.border}>
+        <input
+          className={classes.searchBox}
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
+        <button className={classes.submitButton} type="submit">
+          Search
+        </button>
       </div>
+
+      {/* <form>
+        <label className={classes.searchBox} htmlFor="tickerSymbol">
+          <input
+            id="tickerSymbol"
+            value={tickerSymbol}
+            placeholder="Search for..."
+            onChange={e => setTickerSymbol(e.target.value)}
+          />
+        </label>
+        <button>Submit</button>
+      </form> */}
     </div>
   );
 };

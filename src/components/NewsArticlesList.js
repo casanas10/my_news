@@ -6,7 +6,7 @@ import { getNewsArticle } from "../services/newsAPI";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     paddingTop: "1em"
   }
 });

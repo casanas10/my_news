@@ -3,9 +3,8 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: "purple",
-    paddingTop: "1em",
-    paddingBottom: "1em"
+    marginTop: "1rem",
+    padding: "0"
   }
 });
 

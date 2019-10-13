@@ -5,7 +5,7 @@ import NewsArticlesList from "./components/NewsArticlesList";
 
 const App = () => {
   return (
-    <div style={{ backgroundColor: "green" }}>
+    <div>
       <Header />
       <SearchBar />
       <NewsArticlesList />
