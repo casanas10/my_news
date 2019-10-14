@@ -41893,7 +41893,149 @@ var _withTheme = _interopRequireDefault(require("./withTheme"));
 var _styles = require("@material-ui/styles");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","./createMuiTheme":"../node_modules/@material-ui/core/esm/styles/createMuiTheme.js","./createStyles":"../node_modules/@material-ui/core/esm/styles/createStyles.js","./makeStyles":"../node_modules/@material-ui/core/esm/styles/makeStyles.js","./MuiThemeProvider":"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js","./responsiveFontSizes":"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js","./styled":"../node_modules/@material-ui/core/esm/styles/styled.js","./transitions":"../node_modules/@material-ui/core/esm/styles/transitions.js","./useTheme":"../node_modules/@material-ui/core/esm/styles/useTheme.js","./withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","./withTheme":"../node_modules/@material-ui/core/esm/styles/withTheme.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"./colorManipulator":"../node_modules/@material-ui/core/esm/styles/colorManipulator.js","./createMuiTheme":"../node_modules/@material-ui/core/esm/styles/createMuiTheme.js","./createStyles":"../node_modules/@material-ui/core/esm/styles/createStyles.js","./makeStyles":"../node_modules/@material-ui/core/esm/styles/makeStyles.js","./MuiThemeProvider":"../node_modules/@material-ui/core/esm/styles/MuiThemeProvider.js","./responsiveFontSizes":"../node_modules/@material-ui/core/esm/styles/responsiveFontSizes.js","./styled":"../node_modules/@material-ui/core/esm/styles/styled.js","./transitions":"../node_modules/@material-ui/core/esm/styles/transitions.js","./useTheme":"../node_modules/@material-ui/core/esm/styles/useTheme.js","./withStyles":"../node_modules/@material-ui/core/esm/styles/withStyles.js","./withTheme":"../node_modules/@material-ui/core/esm/styles/withTheme.js","@material-ui/styles":"../node_modules/@material-ui/styles/esm/index.js"}],"components/NewsArticle.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _styles = require("@material-ui/core/styles");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/* eslint-disable react/jsx-no-target-blank */
+
+/* eslint-disable jsx-a11y/alt-text */
+var useStyles = (0, _styles.makeStyles)({
+  root: {
+    marginBottom: "2rem",
+    marginTop: "2rem"
+  },
+  imageBox: {
+    height: "auto",
+    width: "100%"
+  },
+  title: {
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  },
+  spacing: {
+    paddingRight: "1em"
+  },
+  green: {
+    color: "green"
+  },
+  red: {
+    color: "red"
+  }
+});
+
+var NewsArticle = function NewsArticle(_ref) {
+  var article = _ref.article;
+  var BaseURL = "https://markada.herokuapp.com/v1/news/?url=";
+
+  var _useState = (0, _react.useState)(0),
+      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+      sentiment = _useState2[0],
+      setSentiment = _useState2[1];
+
+  (0, _react.useEffect)(function () {
+    var fetchData =
+    /*#__PURE__*/
+    function () {
+      var _ref2 = (0, _asyncToGenerator2.default)(
+      /*#__PURE__*/
+      _regenerator.default.mark(function _callee() {
+        var result, body;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch("".concat(BaseURL).concat(article.url));
+
+              case 2:
+                result = _context.sent;
+                _context.next = 5;
+                return result.json();
+
+              case 5:
+                body = _context.sent;
+                setSentiment(body.sentiment);
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function fetchData() {
+        return _ref2.apply(this, arguments);
+      };
+    }();
+
+    fetchData();
+  }, [article]);
+  var classes = useStyles();
+  return _react.default.createElement("div", {
+    className: [classes.root, "container"].join(" ")
+  }, _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("div", {
+    className: "col-4",
+    style: {
+      paddingLeft: "0"
+    }
+  }, _react.default.createElement("a", {
+    href: article.url
+  }, _react.default.createElement("img", {
+    src: article.urlToImage,
+    className: classes.imageBox
+  }))), _react.default.createElement("div", {
+    className: "col-8"
+  }, _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("a", {
+    className: classes.title,
+    target: "_blank",
+    href: article.url
+  }, article.title)), _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("p", null, article.content && article.content.substring(0, 150))), _react.default.createElement("div", {
+    className: "row"
+  }, _react.default.createElement("span", {
+    className: classes.spacing
+  }, "Author: ", article.author), _react.default.createElement("span", {
+    className: classes.spacing
+  }, "Source: ", article.source.name)), _react.default.createElement("div", {
+    className: "row"
+  }, sentiment == 0 ? _react.default.createElement("span", {
+    className: (classes.spacing, classes.red)
+  }, "Sentiment: Negative") : _react.default.createElement("span", {
+    className: (classes.spacing, classes.green)
+  }, "Sentiment: Positive")))));
+};
+
+var _default = NewsArticle;
+exports.default = _default;
+},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -43606,204 +43748,7 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"services/sentimentAPI.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getSentiment = void 0;
-
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-var _axios = _interopRequireDefault(require("axios"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var BaseURL = "https://markada.herokuapp.com/v1/news/?url=";
-
-var getSentiment =
-/*#__PURE__*/
-function () {
-  var _ref = (0, _asyncToGenerator2.default)(
-  /*#__PURE__*/
-  _regenerator.default.mark(function _callee(url_to_article) {
-    var result;
-    return _regenerator.default.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return _axios.default.get(BaseURL + url_to_article).then(function (_ref2) {
-              var data = _ref2.data;
-              return data.sentiment;
-            });
-
-          case 2:
-            result = _context.sent;
-            return _context.abrupt("return", result);
-
-          case 4:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getSentiment(_x) {
-    return _ref.apply(this, arguments);
-  };
-}();
-
-exports.getSentiment = getSentiment;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","axios":"../node_modules/axios/index.js"}],"components/NewsArticle.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
-var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _styles = require("@material-ui/core/styles");
-
-var _sentimentAPI = require("../services/sentimentAPI");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/* eslint-disable react/jsx-no-target-blank */
-
-/* eslint-disable jsx-a11y/alt-text */
-var useStyles = (0, _styles.makeStyles)({
-  root: {
-    marginBottom: "2rem",
-    marginTop: "2rem"
-  },
-  imageBox: {
-    height: "auto",
-    width: "100%"
-  },
-  title: {
-    whiteSpace: "nowrap",
-    overflow: "hidden",
-    textOverflow: "ellipsis"
-  },
-  spacing: {
-    paddingRight: "1em"
-  },
-  green: {
-    color: "green"
-  },
-  red: {
-    color: "red"
-  }
-});
-
-var NewsArticle = function NewsArticle(_ref) {
-  var article = _ref.article;
-  var BaseURL = "https://markada.herokuapp.com/v1/news/?url=";
-
-  var _useState = (0, _react.useState)(0),
-      _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-      sentiment = _useState2[0],
-      setSentiment = _useState2[1];
-
-  (0, _react.useEffect)(function () {
-    var fetchData =
-    /*#__PURE__*/
-    function () {
-      var _ref2 = (0, _asyncToGenerator2.default)(
-      /*#__PURE__*/
-      _regenerator.default.mark(function _callee() {
-        var result, body;
-        return _regenerator.default.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return fetch("".concat(BaseURL).concat(article.url));
-
-              case 2:
-                result = _context.sent;
-                _context.next = 5;
-                return result.json();
-
-              case 5:
-                body = _context.sent;
-                setSentiment(body.sentiment);
-
-              case 7:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function fetchData() {
-        return _ref2.apply(this, arguments);
-      };
-    }();
-
-    fetchData();
-  }, [article]);
-  var classes = useStyles();
-  return _react.default.createElement("div", {
-    className: [classes.root, "container"].join(" ")
-  }, _react.default.createElement("div", {
-    className: "row"
-  }, _react.default.createElement("div", {
-    className: "col-4",
-    style: {
-      paddingLeft: "0"
-    }
-  }, _react.default.createElement("a", {
-    href: article.url
-  }, _react.default.createElement("img", {
-    src: article.urlToImage,
-    className: classes.imageBox
-  }))), _react.default.createElement("div", {
-    className: "col-8"
-  }, _react.default.createElement("div", {
-    className: "row"
-  }, _react.default.createElement("a", {
-    className: classes.title,
-    target: "_blank",
-    href: article.url
-  }, article.title)), _react.default.createElement("div", {
-    className: "row"
-  }, _react.default.createElement("p", null, article.content && article.content.substring(0, 150))), _react.default.createElement("div", {
-    className: "row"
-  }, _react.default.createElement("span", {
-    className: classes.spacing
-  }, "Author: ", article.author), _react.default.createElement("span", {
-    className: classes.spacing
-  }, "Source: ", article.source.name)), _react.default.createElement("div", {
-    className: "row"
-  }, sentiment == 0 ? _react.default.createElement("span", {
-    className: (classes.spacing, classes.red)
-  }, "Sentiment: Negative") : _react.default.createElement("span", {
-    className: (classes.spacing, classes.green)
-  }, "Sentiment: Positive")))));
-};
-
-var _default = NewsArticle;
-exports.default = _default;
-},{"@babel/runtime/regenerator":"../node_modules/@babel/runtime/regenerator/index.js","@babel/runtime/helpers/asyncToGenerator":"../node_modules/@babel/runtime/helpers/asyncToGenerator.js","@babel/runtime/helpers/slicedToArray":"../node_modules/@babel/runtime/helpers/slicedToArray.js","react":"../node_modules/react/index.js","@material-ui/core/styles":"../node_modules/@material-ui/core/esm/styles/index.js","../services/sentimentAPI":"services/sentimentAPI.js"}],"services/newsAPI.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"services/newsAPI.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44056,7 +44001,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58675" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63450" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
