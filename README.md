@@ -2,6 +2,21 @@
 
 > React front end application that fetches the top 20 news articles for a particular topic. It also uses the Markada API to analyze the overall sentiment.
 
+## Running the APP
+
+Clone the repo
+
+```
+git clone https://github.com/casanas10/my_news
+```
+
+Navigate to the cloned repo
+Run it locally in DEVELOPMENT mode
+
+```
+npm run dev
+```
+
 ## Purpose
 
 The goal of this app was to practice creating React applications and test my backend API service.
