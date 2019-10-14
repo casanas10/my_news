@@ -3,7 +3,6 @@
 
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { getSentiment } from "../services/sentimentAPI";
 
 const useStyles = makeStyles({
   root: {
