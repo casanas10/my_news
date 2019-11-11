@@ -41942,6 +41942,9 @@ var useStyles = (0, _styles.makeStyles)({
   },
   red: {
     color: "red"
+  },
+  black: {
+    color: "black"
   }
 });
 
@@ -41994,6 +41997,22 @@ var NewsArticle = function NewsArticle(_ref) {
     fetchData();
   }, [article]);
   var classes = useStyles();
+  var sent;
+
+  if (sentiment === "-1") {
+    sent = _react.default.createElement("span", {
+      className: (classes.spacing, classes.red)
+    }, "Sentiment: Negative");
+  } else if (sentiment === "0") {
+    sent = _react.default.createElement("span", {
+      className: (classes.spacing, classes.black)
+    }, "Sentiment: Neutral");
+  } else {
+    sent = _react.default.createElement("span", {
+      className: (classes.spacing, classes.green)
+    }, "Sentiment: Positive");
+  }
+
   return _react.default.createElement("div", {
     className: [classes.root, "container"].join(" ")
   }, _react.default.createElement("div", {
@@ -42026,11 +42045,7 @@ var NewsArticle = function NewsArticle(_ref) {
     className: classes.spacing
   }, "Source: ", article.source.name)), _react.default.createElement("div", {
     className: "row"
-  }, sentiment == 0 ? _react.default.createElement("span", {
-    className: (classes.spacing, classes.red)
-  }, "Sentiment: Negative") : _react.default.createElement("span", {
-    className: (classes.spacing, classes.green)
-  }, "Sentiment: Positive")))));
+  }, sent))));
 };
 
 var _default = NewsArticle;
@@ -44001,7 +44016,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63450" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57629" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
