@@ -26,6 +26,9 @@ const useStyles = makeStyles({
   },
   red: {
     color: "red"
+  },
+  black: {
+    color: "black"
   }
 });
 
@@ -43,6 +46,28 @@ const NewsArticle = ({ article }) => {
   }, [article]);
 
   const classes = useStyles();
+
+  var sent;
+
+  if (sentiment === "-1") {
+    sent = (
+      <span className={(classes.spacing, classes.red)}>
+        Sentiment: Negative
+      </span>
+    );
+  } else if (sentiment === "0") {
+    sent = (
+      <span className={(classes.spacing, classes.black)}>
+        Sentiment: Neutral
+      </span>
+    );
+  } else {
+    sent = (
+      <span className={(classes.spacing, classes.green)}>
+        Sentiment: Positive
+      </span>
+    );
+  }
 
   return (
     <div className={[classes.root, "container"].join(" ")}>
@@ -67,17 +92,7 @@ const NewsArticle = ({ article }) => {
               Source: {article.source.name}
             </span>
           </div>
-          <div className="row">
-            {sentiment == 0 ? (
-              <span className={(classes.spacing, classes.red)}>
-                Sentiment: Negative
-              </span>
-            ) : (
-              <span className={(classes.spacing, classes.green)}>
-                Sentiment: Positive
-              </span>
-            )}
-          </div>
+          <div className="row">{sent}</div>
         </div>
       </div>
     </div>
