@@ -10,8 +10,7 @@ Clone the repo
 git clone https://github.com/casanas10/my_news
 ```
 
-Navigate to the cloned repo
-Run it locally in DEVELOPMENT mode
+Navigate to the cloned repo. Then run it locally in DEVELOPMENT mode using
 
 ```
 npm run dev
